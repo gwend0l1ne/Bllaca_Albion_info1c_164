@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %} Editer un LIVRE (WTF) {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Editer un LIVRE
+			</p>
+			<form action="" method="POST" novalidate>
+				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
+				{{ form_update_livre.hidden_tag() }}
+				<div class="form-group">
+					<p>
+						{{ form_update_livre.nom_livre_update_wtf.label }}<br>
+						{{ form_update_livre.nom_livre_update_wtf(cols=50, rows=3) }}<br>
+						{% for error in form_update_livre.nom_livre_update_wtf.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_update_livre.page_livre_update_wtf.label }}<br>
+						{{ form_update_livre.page_livre_update_wtf(size=32) }}<br>
+						{% for error in form_update_livre.page_livre_update_wtf.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_update_livre.description_livre_update_wtf.label }}<br>
+						{{ form_update_livre.description_livre_update_wtf(cols=50, rows=10) }}<br>
+						{% for error in form_update_livre.description_livre_update_wtf.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_update_livre.cover_link_livre_update_wtf.label }}<br>
+						{{ form_update_livre.cover_link_livre_update_wtf(cols=100, rows=10) }}<br>
+						{% for error in form_update_livre.cover_link_livre_update_wtf.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+					<p>
+						{{ form_update_livre.datesortie_livre_update_wtf.label }}<br>
+						{{ form_update_livre.datesortie_livre_update_wtf(size=12) }}<br>
+						{% for error in form_update_livre.datesortie_livre_update_wtf.errors %}
+						<span style="color: red;">[{{ error }}]</span>
+						{% endfor %}
+					</p>
+				</div>
+				{{ form_update_livre.submit(class="btn btn-primary") }}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
